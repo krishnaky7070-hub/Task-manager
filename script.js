@@ -8,3 +8,5 @@ function showTasks() {
     taskList.appendChild(li);
   }
 }
+  showTasks();
+  taskInput.value = "";
