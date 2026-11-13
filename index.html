@@ -23,27 +23,7 @@
     <ul id = "tasklist"></ul>
   </div>
 
-    <script src ="script.js">
-      console.log("script is working");
-
-      var task = [];
-      var form = document.getElementById("taskForm");
-      var taskInput = document.getElementById("taskInput");
-      var priority = document.getElementById("priority");
-      var taskList = document.getElementById("taskList");
-      form.addEventListener("submit", function(e) {
-        e.preventDefault();
-
-        var text = taskInput.value;
-        var newTask = {
-          text: text,
-          priority: priority.value,
-          done:false
-        };
-        tasks.push(newTask);
-        console.log(tasks);
-      });
-    </script>
+    <script src ="script.js"></script>
     
   <footer>
     <p>Made by Krishna - CSE326 CA Project </p>
