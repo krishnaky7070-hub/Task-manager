@@ -25,7 +25,7 @@ form.addEventListener("submit", function(e) {
   };
 
   tasks.push(newTask);
-
+  saveTasks();
   // commit 5: show tasks and clear the input box
   showTasks();
   taskInput.value = "";
@@ -41,4 +41,7 @@ function showTasks() {
     li.className = tasks[i].priority;
     taskList.appendChild(li);
   }
+}
+function saveTasks() {
+  localStorage.setItem("tasks", JSON.stringify(tasks));
 }
