@@ -52,7 +52,17 @@ function loadTasks() {
     tasks = JSON.parse(saved);
   }
 }
+var clearBtn = document.getElementById("clearBtn");
 
+clearBtn.addEventListener("click", function() {
+  var sure = confirm("Delete all tasks?");
+
+  if (sure) {
+    tasks = [];
+    localStorage.removeItem("tasks");
+    showTasks();
+  }
+});
 
 
 loadTasks();
