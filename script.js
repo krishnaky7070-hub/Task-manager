@@ -52,3 +52,6 @@ function loadTasks() {
     tasks = JSON.parse(saved);
   }
 }
+
+loadTasks();
+showTasks();
