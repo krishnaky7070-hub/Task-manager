@@ -45,3 +45,10 @@ function showTasks() {
 function saveTasks() {
   localStorage.setItem("tasks", JSON.stringify(tasks));
 }
+function loadTasks() {
+  var saved = localStorage.getItem("tasks");
+
+  if (saved) {
+    tasks = JSON.parse(saved);
+  }
+}
