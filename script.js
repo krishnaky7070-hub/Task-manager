@@ -29,6 +29,7 @@ form.addEventListener("submit", function(e) {
   var newTask = {
     text: text,
     priority: priority.value,
+    dueDate: dueDate.value,
     done: false
   };
 
@@ -37,6 +38,7 @@ form.addEventListener("submit", function(e) {
   // commit 5: show tasks and clear the input box
   showTasks();
   taskInput.value = "";
+  dueDate.value = ""; 
 });
 
 // commit 4: show all tasks on the page
@@ -61,7 +63,13 @@ function showTasks() {
     }
 
     var span = document.createElement("span");
-    span.innerText = tasks[i].text + " (" + tasks[i].priority + ") ";
+     var taskText = tasks[i].text + " (" + tasks[i].priority + ")";
+
+    if (tasks[i].dueDate) {
+      taskText = taskText + " - Due: " + tasks[i].dueDate;
+    }
+
+    span.innerText = taskText + " ";
     li.appendChild(span);
 
     var doneButton = document.createElement("button");
