@@ -2,6 +2,8 @@
 var tasks = [];
 var currentFilter = "all";
 
+
+var dueDate = document.getElementById("dueDate");
 var form = document.getElementById("taskForm");
 var taskInput = document.getElementById("taskInput");
 var priority = document.getElementById("priority");
