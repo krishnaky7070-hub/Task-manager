@@ -5,6 +5,7 @@ var form = document.getElementById("taskForm");
 var taskInput = document.getElementById("taskInput");
 var priority = document.getElementById("priority");
 var taskList = document.getElementById("taskList");
+var counter = document.getElementById("counter");
 
 // commit 3: when the form is submitted
 form.addEventListener("submit", function(e) {
@@ -42,6 +43,21 @@ function showTasks() {
     taskList.appendChild(li);
   }
 }
+
+
+function updateCounter() {
+  var pending = 0;
+
+  for (var i = 0; i < tasks.length; i++) {
+    if (tasks[i].done == false) {
+      pending++;
+    }
+  }
+
+  counter.innerText = pending + " pending out of " + tasks.length + " tasks";
+}
+
+
 function saveTasks() {
   localStorage.setItem("tasks", JSON.stringify(tasks));
 }
