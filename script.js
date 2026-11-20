@@ -132,6 +132,65 @@ function getToday() {
 
   return year + "-" + month + "-" + day;
 }
+function showHistory() {
+  var historyList = document.getElementById("historyList");
+  historyList.innerHTML = "";
+
+  var today = getToday();
+  var days = {};
+
+  for (var i = 0; i < tasks.length; i++) {
+    var date = tasks[i].createdOn;
+
+    if (!date) {
+      date = "Older tasks";
+    }
+
+    if (date == today) {
+      continue;
+    }
+
+    if (days[date] == undefined) {
+      days[date] = [];
+    }
+
+    days[date].push(tasks[i]);
+  }
+
+  var dates = Object.keys(days).sort().reverse();
+
+  if (dates.length == 0) {
+    historyList.innerText = "No previous tasks yet";
+    return;
+  }
+
+  for (var j = 0; j < dates.length; j++) {
+    var group = days[dates[j]];
+    var doneCount = 0;
+
+    for (var k = 0; k < group.length; k++) {
+      if (group[k].done == true) {
+        doneCount++;
+      }
+    }
+
+    var heading = document.createElement("h3");
+    heading.innerText = dates[j] + " (" + doneCount + " of " + group.length + " done)";
+    historyList.appendChild(heading);
+
+    for (var m = 0; m < group.length; m++) {
+      var status = "Pending";
+
+      if (group[m].done == true) {
+        status = "Done";
+      }
+
+      var p = document.createElement("p");
+      p.innerText = group[m].text + " (" + group[m].priority + ") - " + status;
+      historyList.appendChild(p);
+    }
+  }
+}
 function loadTasks() {
   var saved = localStorage.getItem("tasks");
   
