@@ -42,6 +42,10 @@ function showTasks() {
     li.className = tasks[i].priority;
     taskList.appendChild(li);
   }
+    
+
+  updateCounter();
+
 }
 
 

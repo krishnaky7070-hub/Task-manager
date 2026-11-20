@@ -57,3 +57,11 @@ li.high {
   color: gray;
   margin-top: 15px;
 }
+#filters {
+  margin-top: 15px;
+}
+
+#filters button {
+  background-color: #2980b9;
+  margin-right: 5px;
+}
