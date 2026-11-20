@@ -1,5 +1,6 @@
 // commit 2: array and elements
 var tasks = [];
+var currentFilter = "all";
 
 var form = document.getElementById("taskForm");
 var taskInput = document.getElementById("taskInput");
@@ -84,6 +85,24 @@ clearBtn.addEventListener("click", function() {
   }
 });
 
+var allBtn = document.getElementById("allBtn");
+var pendingBtn = document.getElementById("pendingBtn");
+var doneBtn = document.getElementById("doneBtn");
+
+allBtn.addEventListener("click", function() {
+  currentFilter = "all";
+  showTasks();
+});
+
+pendingBtn.addEventListener("click", function() {
+  currentFilter = "pending";
+  showTasks();
+});
+
+doneBtn.addEventListener("click", function() {
+  currentFilter = "done";
+  showTasks();
+});
 
 loadTasks();
 showTasks();
