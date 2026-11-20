@@ -228,6 +228,19 @@ doneBtn.addEventListener("click", function() {
   currentFilter = "done";
   showTasks();
 });
+var historyBtn = document.getElementById("historyBtn");
+var historyBox = document.getElementById("historyBox");
+
+historyBtn.addEventListener("click", function() {
+  if (historyBox.style.display == "block") {
+    historyBox.style.display = "none";
+    historyBtn.innerText = "Show History";
+  } else {
+    showHistory();
+    historyBox.style.display = "block";
+    historyBtn.innerText = "Hide History";
+  }
+});
 
 loadTasks();
 showTasks();
