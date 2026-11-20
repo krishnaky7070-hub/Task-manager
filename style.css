@@ -65,3 +65,12 @@ li.high {
   background-color: #2980b9;
   margin-right: 5px;
 }
+li.finished span {
+  text-decoration: line-through;
+  color: gray;
+}
+
+li button {
+  margin-left: 5px;
+  padding: 4px 8px;
+}

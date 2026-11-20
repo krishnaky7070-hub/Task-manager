@@ -7,6 +7,10 @@ var taskInput = document.getElementById("taskInput");
 var priority = document.getElementById("priority");
 var taskList = document.getElementById("taskList");
 var counter = document.getElementById("counter");
+var clearBtn = document.getElementById("clearBtn");
+var allBtn = document.getElementById("allBtn");
+var pendingBtn = document.getElementById("pendingBtn");
+var doneBtn = document.getElementById("doneBtn");
 
 // commit 3: when the form is submitted
 form.addEventListener("submit", function(e) {
@@ -34,6 +38,7 @@ form.addEventListener("submit", function(e) {
 });
 
 // commit 4: show all tasks on the page
+// commit 4: show all tasks on the page
 function showTasks() {
   taskList.innerHTML = "";
 
@@ -45,28 +50,55 @@ function showTasks() {
     if (currentFilter == "done" && tasks[i].done == false) {
       continue;
     }
+
     var li = document.createElement("li");
-    li.innerText = tasks[i].text + " (" + tasks[i].priority + ")";
     li.className = tasks[i].priority;
+
+    if (tasks[i].done == true) {
+      li.className = li.className + " finished";
+    }
+
+    var span = document.createElement("span");
+    span.innerText = tasks[i].text + " (" + tasks[i].priority + ") ";
+    li.appendChild(span);
+
+    var doneButton = document.createElement("button");
+    doneButton.innerText = "Done";
+    doneButton.setAttribute("onclick", "toggleDone(" + i + ")");
+    li.appendChild(doneButton);
+
+    var deleteButton = document.createElement("button");
+    deleteButton.innerText = "Delete";
+    deleteButton.setAttribute("onclick", "deleteTask(" + i + ")");
+    li.appendChild(deleteButton);
+
     taskList.appendChild(li);
   }
-    
 
   updateCounter();
-
 }
-
 
 function updateCounter() {
   var pending = 0;
-
+  
   for (var i = 0; i < tasks.length; i++) {
     if (tasks[i].done == false) {
       pending++;
     }
   }
-
+  
   counter.innerText = pending + " pending out of " + tasks.length + " tasks";
+}
+function toggleDone(index) {
+  tasks[index].done = !tasks[index].done;
+  saveTasks();
+  showTasks();
+}
+
+function deleteTask(index) {
+  tasks.splice(index, 1);
+  saveTasks();
+  showTasks();
 }
 
 
@@ -75,7 +107,7 @@ function saveTasks() {
 }
 function loadTasks() {
   var saved = localStorage.getItem("tasks");
-
+  
   if (saved) {
     tasks = JSON.parse(saved);
   }
