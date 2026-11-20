@@ -10,7 +10,7 @@ header {
     padding: 20px;
 }
 .container {
-    width: 500px;
+   max-width: 500px;
     margin: 30px;
     background-color: white;
     padding: 20px;
@@ -85,4 +85,14 @@ li {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+@media (max-width: 600px) {
+  .container {
+    margin: 15px;
+  }
+
+  #taskInput {
+    width: 100%;
+    margin-bottom: 8px;
+  }
 }
