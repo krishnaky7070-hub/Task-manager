@@ -30,6 +30,7 @@ form.addEventListener("submit", function(e) {
     text: text,
     priority: priority.value,
     dueDate: dueDate.value,
+    createdOn: getToday(), 
     done: false
   };
 
@@ -100,7 +101,7 @@ function updateCounter() {
   counter.innerText = pending + " pending out of " + tasks.length + " tasks";
 }
 function toggleDone(index) {
-  tasks[index].done = !tasks[index].done;
+  tasks[index].done = !tasks[index].done; 
   saveTasks();
   showTasks();
 }
@@ -114,6 +115,22 @@ function deleteTask(index) {
 
 function saveTasks() {
   localStorage.setItem("tasks", JSON.stringify(tasks));
+}
+function getToday() {
+  var d = new Date();
+  var year = d.getFullYear();
+  var month = d.getMonth() + 1;
+  var day = d.getDate();
+
+  if (month < 10) {
+    month = "0" + month;
+  }
+
+  if (day < 10) {
+    day = "0" + day;
+  }
+
+  return year + "-" + month + "-" + day;
 }
 function loadTasks() {
   var saved = localStorage.getItem("tasks");
