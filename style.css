@@ -74,3 +74,15 @@ li button {
   margin-left: 5px;
   padding: 4px 8px;
 }
+button:hover {
+  opacity: 0.8;
+}
+#taskInput:focus {
+  outline: 2px solid #2980b9;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
