@@ -54,6 +54,6 @@ No installation is needed.
 
 ## Made By
 
-[Your Name]
-[Your Registration Number]
+Krishna Yadav
+12605705
 B.Tech CSE, Lovely Professional University
